@@ -1,24 +1,17 @@
-<script setup>
-import HelloWorld from "./components/HelloWorld.vue";
-</script>
-
 <template>
-  <div class="flex items-center justify-center min-h-screen bg-gray-100">
-    <h1 class="text-4xl font-bold text-blue-600">Vue 3 + Tailwind CSS radi!</h1>
-  </div>
+  <router-view></router-view>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #2148C0;
+  min-height: 100vh;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+#app {
+  background-color: #2148C0;
+  min-height: 100vh;
 }
 </style>
