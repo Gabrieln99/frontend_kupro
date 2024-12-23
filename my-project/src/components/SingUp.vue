@@ -20,7 +20,7 @@ const handleSubmit = () => {
     </div>
     <div class="tab-container">
       <router-link to="/login" class="tab">Login</router-link>
-      <router-link to="/signup" class="tab">SignUp</router-link>
+      <router-link to="/singup" class="tab">SingUp</router-link>
     </div>
     <form @submit.prevent="handleSubmit">
       <div class="form-group">
@@ -138,15 +138,16 @@ input {
 }
 
 button {
-  background-color: #4caf50;
-  color: white;
+  background-color: #ffffff;
+  color: #2148c0;
   padding: 10px 15px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #f0f0f0;
 }
 </style>
