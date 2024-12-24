@@ -8,19 +8,42 @@ const formData = reactive({
   lozinka: "",
 });
 
+const errors = reactive({}); // Dodaj za praćenje grešaka
+
 const handleSubmit = () => {
+  // Resetiraj greške
+  errors.ime = !formData.ime ? "Ime je obavezno!" : "";
+  errors.prezime = !formData.prezime ? "Prezime je obavezno!" : "";
+  errors.email = !formData.email.match(/^\S+@\S+\.\S+$/)
+    ? "E-mail nije ispravan!"
+    : "";
+  errors.lozinka =
+    formData.lozinka.length < 6 ? "Lozinka mora imati najmanje 6 znakova!" : "";
+
+  if (Object.values(errors).some((error) => error)) {
+    console.log("Postoje greške:", errors);
+    return;
+  }
+
   console.log("Form submitted:", formData);
 };
+
+/*
+const handleSubmit = () => {
+  console.log("Form submitted:", formData);
+};*/
 </script>
 
 <template>
   <div class="form-container">
     <div class="logo">
       <img src="../assets/kupro.png" alt="Logo" />
+      <br />
+      <span class="textlogo">KuPro</span>
     </div>
     <div class="tab-container">
       <router-link to="/login" class="tab">Login</router-link>
-      <router-link to="/singup" class="tab">SingUp</router-link>
+      <router-link to="/signup" class="tab">SignUp</router-link>
     </div>
     <form @submit.prevent="handleSubmit">
       <div class="form-group">
@@ -80,6 +103,13 @@ body {
 .logo img {
   width: 150px;
   height: auto;
+}
+.textlogo {
+  margin-left: 20px;
+  font-size: 40px;
+  font-family: "Arial";
+  color: white;
+  font-weight: bold;
 }
 
 .tab-container {

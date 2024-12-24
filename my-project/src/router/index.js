@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
-import SingUP from "../components/SingUp.vue";
+import SignUp from "../components/SignUp.vue";
 import LogIn from "../components/LogIn.vue";
 
 const routes = [
   {
-    path: "/singup",
-    name: "SingUP",
-    component: SingUP,
+    path: "/signup",
+    name: "SignUp",
+    component: SignUp,
   },
   {
     path: "/login",
@@ -17,7 +17,7 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
 });
 
 export default router;

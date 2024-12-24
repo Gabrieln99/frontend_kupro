@@ -12,38 +12,40 @@ const handleSubmit = () => {
 </script>
 
 <template>
-    <div class="form-container">
-      <div class="logo">
-        <img src="../assets/kupro.png" alt="Logo" />
-      </div>
-      <div class="tab-container">
-        <router-link to="/login" class="tab">LogIn</router-link>
-        <router-link to="/singup" class="tab">SingUp</router-link>
-      </div>
-      <form @submit.prevent="handleSubmit">
-        <div class="form-group">
-          <label for="email">E-mail:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Unesite svoj E-mail"
-            v-model="formData.email"
-          />
-        </div>
-        <div class="form-group">
-          <label for="lozinka">Lozinka:</label>
-          <input
-            type="password"
-            id="lozinka"
-            name="lozinka"
-            placeholder="Unesite svoju lozinku"
-            v-model="formData.lozinka"
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
+  <div class="form-container">
+    <div class="logo">
+      <img src="../assets/kupro.png" alt="Logo" />
+      <br />
+      <span class="textlogo">KuPro</span>
     </div>
+    <div class="tab-container">
+      <router-link to="/login" class="tab">LogIn</router-link>
+      <router-link to="/signup" class="tab">SignUp</router-link>
+    </div>
+    <form @submit.prevent="handleSubmit">
+      <div class="form-group">
+        <label for="email">E-mail:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Unesite svoj E-mail"
+          v-model="formData.email"
+        />
+      </div>
+      <div class="form-group">
+        <label for="lozinka">Lozinka:</label>
+        <input
+          type="password"
+          id="lozinka"
+          name="lozinka"
+          placeholder="Unesite svoju lozinku"
+          v-model="formData.lozinka"
+        />
+      </div>
+      <button type="submit">Login</button>
+    </form>
+  </div>
 </template>
 
 <style scoped>
@@ -58,6 +60,13 @@ body {
 .logo img {
   width: 150px;
   height: auto;
+}
+.textlogo {
+  margin-left: 20px;
+  font-size: 40px;
+  font-family: "Arial";
+  color: white;
+  font-weight: bold;
 }
 
 .tab-container {
