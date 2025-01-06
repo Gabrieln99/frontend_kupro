@@ -3,6 +3,8 @@
 </template>
 
 <style>
+/* bolje da pustimo App.vue prazan da ga ne prekrcavamo, kao landing page bolje napraviti zaseban landing.vue */
+
 body {
   margin: 0;
   padding: 0;
@@ -15,5 +17,3 @@ body {
   min-height: 100vh;
 }
 </style>
-
-
