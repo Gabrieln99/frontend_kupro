@@ -1,140 +1,143 @@
-<script setup>
-import { reactive } from "vue";
-
-const formData = reactive({
-  email: "",
-  lozinka: "",
-});
-
-const handleSubmit = () => {
-  console.log("Form submitted:", formData);
-};
-</script>
-
 <template>
-  <div class="form-container">
-    <div class="logo">
-      <img src="../assets/kupro.png" alt="Logo" />
-      <br />
-      <span class="textlogo">KuPro</span>
-    </div>
-    <div class="tab-container">
-      <router-link to="/login" class="tab">LogIn</router-link>
-      <router-link to="/signup" class="tab">SignUp</router-link>
-    </div>
-    <form @submit.prevent="handleSubmit">
-      <div class="form-group">
-        <label for="email">E-mail:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Unesite svoj E-mail"
-          v-model="formData.email"
-        />
+  <div class="container">
+    <div class="gradient-bg"></div>
+    <div class="content">
+      <div class="logo">
+        <svg width="124" height="102" viewBox="0 0 124 102" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 2H15.6523C17.8311 2 19.7535 3.42651 20.3871 5.51343L41.7596 75.9005C42.3932 77.9874 44.3156 79.4139 46.4942 79.4139H94.6487C96.9129 79.4139 98.8889 77.8753 99.4455 75.6779L108.068 41.6561C108.624 39.4586 110.6 37.9201 112.865 37.9201H121.386" stroke="white" stroke-width="3.75648" stroke-linecap="round"/>
+          <path d="M72.5935 21.7428C71.8688 21.0174 70.6939 21.0174 69.9692 21.7428L58.1591 33.5667C57.4346 34.2923 57.4346 35.4686 58.1591 36.1942C58.8839 36.9197 60.0589 36.9197 60.7837 36.1942L71.2813 25.6842L81.779 36.1942C82.5037 36.9197 83.6786 36.9197 84.4034 36.1942C85.1281 35.4686 85.1281 34.2923 84.4034 33.5667L72.5935 21.7428ZM73.1371 57.7381V23.0566H69.4256V57.7381H73.1371Z" fill="white"/>
+          <path d="M58.2909 99.8512C61.3656 99.8512 63.8581 97.3557 63.8581 94.2774C63.8581 91.1991 61.3656 88.7036 58.2909 88.7036C55.2162 88.7036 52.7236 91.1991 52.7236 94.2774C52.7236 97.3557 55.2162 99.8512 58.2909 99.8512Z" stroke="white" stroke-width="3.00518"/>
+          <path d="M85.5086 99.8512C88.5833 99.8512 91.0759 97.3557 91.0759 94.2774C91.0759 91.1991 88.5833 88.7036 85.5086 88.7036C82.4339 88.7036 79.9414 91.1991 79.9414 94.2774C79.9414 97.3557 82.4339 99.8512 85.5086 99.8512Z" stroke="white" stroke-width="3.00518"/>
+        </svg>
       </div>
-      <div class="form-group">
-        <label for="lozinka">Lozinka:</label>
-        <input
-          type="password"
-          id="lozinka"
-          name="lozinka"
-          placeholder="Unesite svoju lozinku"
-          v-model="formData.lozinka"
-        />
+      <h1 class="welcome-text">Welcome to KuPro</h1>
+      <p class="login-text">Login to your account</p>
+      
+      <div class="input-group">
+        <label>Email/Mobile Number</label>
+        <input type="text" class="input-field" />
       </div>
-      <button type="submit">Login</button>
-    </form>
+      
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" class="input-field" />
+      </div>
+      
+      <button class="login-button">Login</button>
+      
+      <p class="forgot-password">Forgot your password?</p>
+      
+      <p class="signup-text">
+        Don't have an account? <span class="signup-link">Sign up</span>
+      </p>
+    </div>
   </div>
 </template>
 
 <style scoped>
-body {
-  background-color: #2148c0;
+.container {
+  width: 375px;
+  height: 812px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
 }
 
-.logo {
-  margin-bottom: 30px;
+.gradient-bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: linear-gradient(180deg, #061841 0%, #0E3FA7 99.99%, #0E3B9E 100%);
 }
 
-.logo img {
-  width: 150px;
-  height: auto;
-}
-.textlogo {
-  margin-left: 20px;
-  font-size: 40px;
-  font-family: "Arial";
-  color: white;
-  font-weight: bold;
-}
-
-.tab-container {
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 5px;
-  border-radius: 25px;
-  margin-bottom: 30px;
-  display: flex;
-  width: 250px;
-}
-
-.tab {
-  flex: 1;
-  padding: 10px 20px;
-  text-align: center;
-  color: white;
-  text-decoration: none;
-  border-radius: 20px;
-  transition: all 0.3s ease;
-}
-
-.tab.router-link-active {
-  background-color: white;
-  color: #000000;
-}
-
-.form-container {
+.content {
+  position: relative;
+  padding: 40px 32px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  text-align: center;
+  gap: 20px;
 }
 
-form {
+.welcome-text {
+  color: white;
+  font-size: 24px;
+  font-family: Montserrat;
+  font-weight: 500;
+  margin: 20px 0;
+}
+
+.login-text {
+  color: white;
+  font-size: 16px;
+  font-family: Montserrat;
+  font-weight: 400;
+}
+
+.input-group {
   width: 100%;
-  max-width: 400px;
+  margin-bottom: 16px;
 }
 
-.form-group {
-  margin-bottom: 15px;
-}
-
-label {
+.input-group label {
+  color: white;
+  font-size: 18px;
+  font-family: Montserrat;
+  font-weight: 400;
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
-input {
-  width: 100%;
-  padding: 12px;
-  border-radius: 25px;
-  border: none;
-  box-sizing: border-box;
+.input-field {
+  width: 311px;
+  height: 48px;
+  border-radius: 24px;
+  border: 1px solid white;
+  background: transparent;
+  color: white;
+  padding: 0 20px;
 }
 
-button {
-  background-color: #ffffff;
-  color: #2148c0;
-  padding: 10px 15px;
+.login-button {
+  width: 311px;
+  height: 48px;
+  background: white;
+  border-radius: 24px;
   border: none;
-  border-radius: 4px;
+  color: #0E3B9E;
+  font-size: 16px;
+  font-family: Montserrat;
+  font-weight: 600;
   cursor: pointer;
-  font-weight: bold;
 }
 
-button:hover {
-  background-color: #f0f0f0;
+.forgot-password {
+  color: white;
+  font-size: 18px;
+  font-family: Montserrat;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.signup-text {
+  color: white;
+  font-size: 18px;
+  font-family: Montserrat;
+  font-weight: 400;
+}
+
+.signup-link {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 375px) {
+  .container {
+    width: 100vw;
+    height: 100vh;
+  }
 }
 </style>

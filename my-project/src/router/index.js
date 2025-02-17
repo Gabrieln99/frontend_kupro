@@ -3,11 +3,17 @@ import Landing from "../components/Landing.vue";
 import SignUp from "../components/SignUp.vue";
 import LogIn from "../components/LogIn.vue";
 import Ulaz from "../components/Ulaz.vue";
+import Glavna from "../components/Glavna.vue";
 
 const routes = [
   {
     path: "/",
     redirect: "/landing",
+  },
+  {
+    path: "/glavna",
+    name: "Glavna",
+    component: Glavna, 
   },
   {
     path: "/ulaz",
