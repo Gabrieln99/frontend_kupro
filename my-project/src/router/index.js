@@ -18,7 +18,7 @@ const routes = [
   {
     path: "/ulaz",
     name: "Ulaz",
-    component: Ulaz,  // ✔️ Ispravljen problem
+    component: Ulaz, 
   },
   {
     path: "/landing",
