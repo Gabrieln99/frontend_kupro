@@ -161,7 +161,7 @@ export default {
   color: #ff4d4d;
   font-size: 12px;
   text-align: left;
-  margin-top: -8px;
+  margin-top: -8px; /*nebi skodilo napravit da jeporavnato s input poljen moran poc delat drugu zadacu pa cu makar ja jutre ku rivan od dela  */
   margin-bottom: 10px;
   width: 100%;
 }
