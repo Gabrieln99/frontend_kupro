@@ -1,3 +1,5 @@
+<!-- Pocetna udo
+
 <script>
 export default {
   name: "LoginPage",
@@ -29,6 +31,147 @@ export default {
   },
 };
 </script>
+-->
+
+<script>
+// import axios from "axios"; //ako doddam axios ne uspje ga ucitati
+
+export default {
+  name: "SignUp",
+  data() {
+    return {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      passwordError: "",
+      confirmPasswordError: "",
+      message: "", // ovdje naam izbacuje message uspjeh ili neuspjesna prijava
+    };
+  },
+  methods: {
+    validatePassword() {
+      if (this.password.length < 8) {
+        this.passwordError = "Password must be at least 8 characters.";
+      } else if (!/[A-Z]/.test(this.password)) {
+        this.passwordError =
+          "Password must contain at least one uppercase letter.";
+      } else {
+        this.passwordError = "";
+      }
+    },
+    validateConfirmPassword() {
+      if (this.confirmPassword !== this.password) {
+        this.confirmPasswordError = "Passwords do not match.";
+      } else {
+        this.confirmPasswordError = "";
+      }
+    },
+    async registerUser() {
+      if (this.passwordError || this.confirmPasswordError) {
+        this.message = "Please fix password errors before proceeding.";
+        return;
+      }
+
+      try {
+        const response = await axios.post("http://localhost:3000/api/signup", {
+          firstName: this.firstName,
+          lastName: this.lastName,
+          email: this.email,
+          password: this.password,
+        });
+
+        this.message = response.data.message; // "usjesno User registered successfully"
+      } catch (error) {
+        this.message = error.response?.data?.message || "Registration failed";
+      }
+    },
+  },
+};
+</script>
+
+<template>
+  <div class="container">
+    <div class="gradient-bg"></div>
+    <div class="content">
+      <div class="logo">
+        <img src="../assets/kupro.png" alt="KuPro Logo" class="logo-image" />
+      </div>
+
+      <h1 class="welcome-text">Welcome to KuPro</h1>
+      <p class="create-account">Create your account</p>
+
+      <form @submit.prevent="registerUser">
+        <div class="input-group">
+          <input
+            v-model="firstName"
+            type="text"
+            class="input-field"
+            placeholder="First Name"
+            required
+          />
+        </div>
+
+        <div class="input-group">
+          <input
+            v-model="lastName"
+            type="text"
+            class="input-field"
+            placeholder="Last Name"
+            required
+          />
+        </div>
+
+        <div class="input-group">
+          <input
+            v-model="email"
+            type="email"
+            class="input-field"
+            placeholder="Email ID/Phone Number"
+            required
+          />
+        </div>
+
+        <div class="input-group">
+          <input
+            v-model="password"
+            @input="validatePassword"
+            type="password"
+            placeholder="Password"
+            class="input-field"
+            required
+          />
+        </div>
+        <p v-if="passwordError" class="error-message">{{ passwordError }}</p>
+
+        <div class="input-group">
+          <input
+            v-model="confirmPassword"
+            @input="validateConfirmPassword"
+            type="password"
+            placeholder="Re-enter Password"
+            class="input-field"
+            required
+          />
+        </div>
+        <p v-if="confirmPasswordError" class="error-message">
+          {{ confirmPasswordError }}
+        </p>
+
+        <button type="submit" class="create-button">Create</button>
+      </form>
+
+      <p v-if="message" class="success-message">{{ message }}</p>
+
+      <p class="login-text">Have an account? <a href="/login">Log In</a></p>
+    </div>
+  </div>
+</template>
+
+<!--
+
+Pocetna udo
 
 <template>
   <div class="container">
@@ -85,6 +228,7 @@ export default {
     </div>
   </div>
 </template>
+-->
 
 <style scoped>
 .container {
