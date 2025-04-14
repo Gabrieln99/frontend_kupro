@@ -1,40 +1,5 @@
-<!-- Pocetna udo
-
 <script>
-export default {
-  name: "LoginPage",
-  data() {
-    return {
-      password: "",
-      confirmPassword: "",
-      passwordError: "",
-      confirmPasswordError: "",
-    };
-  },
-  methods: {
-    validatePassword() {
-      if (this.password.length < 8) {
-        this.passwordError = "Password must be at least 8 characters.";
-      } else if (!/[A-Z]/.test(this.password)) {
-        this.passwordError = "Password must contain at least one uppercase letter.";
-      } else {
-        this.passwordError = "";
-      }
-    },
-    validateConfirmPassword() {
-      if (this.confirmPassword !== this.password) {
-        this.confirmPasswordError = "Passwords do not match.";
-      } else {
-        this.confirmPasswordError = "";
-      }
-    },
-  },
-};
-</script>
--->
-
-<script>
-// import axios from "axios"; //ako doddam axios ne uspje ga ucitati
+import axios from "axios"; 
 
 export default {
   name: "SignUp",
@@ -75,7 +40,7 @@ export default {
       }
 
       try {
-        const response = await axios.post("http://localhost:3000/api/signup", {
+        const response = await axios.post("http://localhost:3000/auth/signup", {
           firstName: this.firstName,
           lastName: this.lastName,
           email: this.email,
@@ -85,6 +50,7 @@ export default {
         this.message = response.data.message; // "usjesno User registered successfully"
       } catch (error) {
         this.message = error.response?.data?.message || "Registration failed";
+        console.error("Registration failed:", error);
       }
     },
   },

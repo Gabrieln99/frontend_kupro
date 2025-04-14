@@ -8,21 +8,75 @@
       <h1 class="welcome-text">Welcome to KuPro</h1>
       <p class="login-text">Login to your account</p>
 
-      <div class="input-group">
-        <input type="text" placeholder="Email/Mobile Number" class="input-field" />
-      </div>
+      <form @submit.prevent="handleLogin">
+        <div class="input-group">
+          <input
+            type="text"
+            v-model="emailOrMobile"
+            placeholder="Email/Mobile Number"
+            class="input-field"
+          />
+        </div>
 
-      <div class="input-group">
-        <input type="password" placeholder="Password" class="input-field" />
-      </div>
+        <div class="input-group">
+          <input
+            type="password"
+            v-model="password"
+            placeholder="Password"
+            class="input-field"
+          />
+        </div>
 
-      <button class="login-button">Login</button>
+        <button type="submit" class="login-button">Login</button>
+      </form>
 
       <p class="forgot-password">Forgot your password?</p>
-      <p class="signup-text">Don't have an account? <a href="/signup">Sign Up</a></p>
+      <p class="signup-text">
+        Don't have an account? <a href="/signup">Sign Up</a>
+      </p>
     </div>
   </div>
 </template>
+
+<script>
+import axios from "axios";
+
+export default {
+  data() {
+    return {
+      emailOrMobile: "",
+      password: "",
+    };
+  },
+  methods: {
+    async handleLogin() {
+      if (!this.emailOrMobile || !this.password) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      try {
+        const response = await axios.post("https://your-backend-api.com/login", {
+          emailOrMobile: this.emailOrMobile,
+          password: this.password,
+        });
+
+        if (response.data.success) {
+          alert("Login successful!");
+          // Redirect to dashboard or another page
+          this.$router.push("/");
+        } else {
+          alert("Invalid credentials. Please try again.");
+        }
+      } catch (error) {
+        console.error("Login error:", error);
+        alert("An error occurred. Please try again later.");
+      }
+    },
+  },
+};
+</script>
+
 
 <style scoped>
 body {

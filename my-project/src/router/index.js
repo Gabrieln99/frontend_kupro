@@ -4,6 +4,7 @@ import SignUp from "../components/SignUp.vue";
 import LogIn from "../components/LogIn.vue";
 import Ulaz from "../components/Ulaz.vue";
 import Glavna from "../components/Glavna.vue";
+import Home from "../components/Home.vue";
 
 const routes = [
   {
@@ -35,6 +36,11 @@ const routes = [
     name: "LogIn",
     component: LogIn,
   },
+  {
+    path: "/",
+    name: "Home",
+    component: Home,
+  }
 ];
 
 const router = createRouter({
